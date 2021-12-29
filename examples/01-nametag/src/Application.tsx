@@ -1,4 +1,8 @@
-const NameTag = () => {
+type NameTagProps = {
+  name: string;
+};
+
+const NameTag = (props: NameTagProps) => {
   return (
     <main>
       <header>
@@ -13,6 +17,6 @@ const NameTag = () => {
   );
 };
 
-const Application = () => <NameTag />;
+const Application = () => <NameTag name="Steve" />;
 
 export default Application;
