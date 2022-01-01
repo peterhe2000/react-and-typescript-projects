@@ -3,8 +3,8 @@ import { CharacterType } from './characters';
 
 type TableProps = { children: React.ReactNode };
 type TableRowProps = {
-  heading: string;
-  value: string | number;
+  heading: Exclude<Capitalize<keyof CharacterType>, 'Name'>;
+  value: CharacterType[keyof CharacterType];
 };
 
 export const Table = ({ children }: TableProps) => {
