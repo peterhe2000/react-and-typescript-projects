@@ -2,11 +2,13 @@ import * as React from 'react';
 
 import { ColorSwatch } from './ColorSwatch';
 import { ColorInputs } from './ColorInputs';
-import { ColorSliders } from './ColorSliders';
 
 import { toRGB } from './utilities';
 import { reducer } from './reducer';
 import { ThemeContext } from './theme-context';
+import { ColorAdjustment } from './ColorAdjustment';
+import { ColorInput } from './ColorInput';
+import { ColorSlider } from './ColorSlider';
 
 const Application = () => {
   const themes = React.useContext(ThemeContext);
@@ -23,9 +25,10 @@ const Application = () => {
         ...themes.dark
       }}
     >
-      <ColorSwatch {...rgb} />
+      <ColorSwatch />
       <ColorInputs {...rgb} />
-      <ColorSliders {...rgb} dispatch={dispatch} />
+      <ColorAdjustment Adjustment={ColorSlider} />
+      <ColorAdjustment Adjustment={ColorInput} />
     </main>
   );
 };
