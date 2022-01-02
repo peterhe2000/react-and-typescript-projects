@@ -10,7 +10,9 @@ type WithCharacterProps = {
 };
 
 // use function declaration is better for typing of generic since this component can be reuse withAnyComponentWant use character.
-function withCharacter<T>(Component: React.ComponentType<T>) {
+function withCharacter<T extends WithCharacterProps>(
+  Component: React.ComponentType<T>
+) {
   // props component that originally took and omitting those we know we are going to pass in.
   return (props: Omit<T, keyof WithCharacterProps>) => {
     const [character, setCharacter] = React.useState<CharacterType | null>(
@@ -26,6 +28,7 @@ function withCharacter<T>(Component: React.ComponentType<T>) {
     }, []);
 
     if (loading) return <Loading />;
+    // ...(props as T) tell generic component any props passed in is fine
     return <Component {...(props as T)} character={character} />;
   };
 }
