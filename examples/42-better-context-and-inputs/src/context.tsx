@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createContext } from './create-context';
 import { reducer, AdjustmentAction } from './reducer';
 import { RGBColorType } from './types';
 
@@ -12,9 +13,7 @@ const initialState: RGBColorType = {
   blue: 0
 };
 
-export const RGBContext = React.createContext<RGBContextType>(
-  initialState as RGBContextType
-);
+export const [useContext, Provider] = createContext<RGBContextType>();
 
 export const RGBContextProvider = ({
   children
@@ -28,13 +27,13 @@ export const RGBContextProvider = ({
   });
 
   return (
-    <RGBContext.Provider
+    <Provider
       value={{
         ...rgb,
         dispatch
       }}
     >
       {children}
-    </RGBContext.Provider>
+    </Provider>
   );
 };
