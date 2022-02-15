@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { ChangeEvent, Component } from 'react';
 
 type CounterProps = {
   incident: string;
@@ -7,6 +7,7 @@ type CounterProps = {
 type CounterState = {
   count: number;
 };
+
 class Counter extends Component<CounterProps, CounterState> {
   state: CounterState = {
     count: 0
@@ -58,7 +59,7 @@ class Counter extends Component<CounterProps, CounterState> {
 
 class Application extends Component {
   render() {
-    return <Counter />;
+    return <Counter incident="coffee spill" />;
   }
 }
 

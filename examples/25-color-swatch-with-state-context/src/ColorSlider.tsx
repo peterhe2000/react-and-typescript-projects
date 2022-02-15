@@ -1,4 +1,5 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useContext } from 'react';
+import { RGBContext } from './context';
 
 export interface ColorInputProps {
   id: string;

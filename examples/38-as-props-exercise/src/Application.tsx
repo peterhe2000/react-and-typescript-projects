@@ -28,6 +28,7 @@ const Application = () => {
   return (
     <main>
       <Text>{exampleText}</Text>
+      {/* Trying to support following */}
       {/* <Text as="label" htmlFor="id">{exampleText}</Text> works */}
     </main>
   );

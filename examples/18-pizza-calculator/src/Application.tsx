@@ -6,14 +6,14 @@ type PizzaData = {
   slicesPerPie: number;
 };
 
-type PizzaState = PizzaData & { pizzasNeeded: number };
+type PizzaState = PizzaData & { pizzasNeeded: number }; // combine PizzaData and add another properties pizzasNeeded to it.
 
 type PizzaAction = {
   type:
     | 'UPDATE_NUMBER_OF_PEOPLE'
     | 'UPDATE_SLICES_PER_PERSON'
     | 'UPDATE_SLICES_PER_PIE';
-  payload: number; // or can be object type {value: number, location: string}
+  payload: number; // or can be object type eg: {value: number, location: string}
 };
 
 const calculatePizzasNeeded = ({
@@ -69,6 +69,7 @@ const Calculation = ({ count }: { count: number }) => {
   );
 };
 
+// how to define props types example
 const Calculator = ({
   dispatch,
   state

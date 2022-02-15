@@ -12,7 +12,7 @@ export interface AdjustmentInputProps {
 }
 
 export interface ColorAdjustmentProps {
-  Adjustment: React.ComponentType<AdjustmentInputProps>;
+  Adjustment: React.ComponentType<AdjustmentInputProps>; // React.ComponentType is a utility type, the purpose of this is to create a abstraction (HOC) for better reuse.
 }
 
 export const ColorAdjustment = ({ Adjustment }: ColorAdjustmentProps) => {

@@ -4,7 +4,7 @@ type ButtonProps = {
 
 type PrimaryButtonProps = ButtonProps & {
   primary: boolean;
-  secondary?: never;
+  secondary?: never; // never is absolute this this property should be set, no matter what
   destructive?: never;
 };
 type SecondaryButtonProps = ButtonProps & {
@@ -31,18 +31,21 @@ const Button = ({
   primary = false,
   secondary = false,
   destructive = false
-}: ButtonProps) => {
+}: PrimaryButtonProps | SecondaryButtonProps | DestructiveButtonProps) => {
   const classNames = createClassNames({ primary, secondary, destructive });
 
   return <button className={classNames}>{children}</button>;
 };
 
+//<Button primary>Primary</Button> in react any prop is passed in without an equal sign, it just a boolean and it's true eg: primary
 const Application = () => {
   return (
     <main>
       <Button primary>Primary</Button>
       <Button secondary>Secondary</Button>
       <Button destructive>Destructive</Button>
+      {/* Trying to support following */}
+      {/* <Button primary secondary>Primary</Button> */}
     </main>
   );
 };

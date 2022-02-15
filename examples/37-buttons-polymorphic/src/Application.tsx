@@ -1,24 +1,16 @@
-type ButtonProps = {
+import * as React from 'react';
+
+// React React.ElementType is type for general HTML element
+type ButtonOwnProps<E extends React.ElementType = React.ElementType> = {
   children: string;
+  primary?: boolean;
+  secondary?: boolean;
+  destructive?: boolean;
+  as?: E;
 };
 
-type PrimaryButtonProps = {
-  primary: boolean;
-  secondary?: never;
-  destructive?: never;
-};
-
-type SecondaryButtonProps = {
-  primary?: never;
-  secondary: boolean;
-  destructive?: never;
-};
-
-type DestructiveButtonProps = {
-  primary?: never;
-  secondary?: never;
-  destructive: boolean;
-};
+type ButtonProps<E extends React.ElementType> = ButtonOwnProps<E> &
+  Omit<React.ComponentProps<E>, keyof ButtonOwnProps>;
 
 const createClassNames = (classes: { [key: string]: boolean }): string => {
   let classNames = '';
@@ -28,24 +20,29 @@ const createClassNames = (classes: { [key: string]: boolean }): string => {
   return classNames.trim();
 };
 
-const Button = ({
+const defaultElement = 'button';
+
+const Button<E extends React.ElementType = typeof defaultElement> ({
   children,
   primary = false,
   secondary = false,
-  destructive = false
-}: ButtonProps &
-  (PrimaryButtonProps | SecondaryButtonProps | DestructiveButtonProps)) => {
+  destructive = false,
+  as
+}: ButtonProps) => {
   const classNames = createClassNames({ primary, secondary, destructive });
+const TagName = as || defaultElement;
 
-  return <button className={classNames}>{children}</button>;
+  return <TagName className={classNames}>{children}</TagName>;
 };
 
 const Application = () => {
   return (
     <main>
-      <Button primary>Primary</Button>
+      <Button primary>Primary</Button> 
       <Button secondary>Secondary</Button>
       <Button destructive>Destructive</Button>
+      {/* Trying to support following */}
+      {/* <Button primary as="a" href="/">Primary</Button>  */}
     </main>
   );
 };

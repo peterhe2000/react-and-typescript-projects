@@ -3,7 +3,7 @@ import { CharacterType } from './characters';
 
 type TableProps = { children: React.ReactNode };
 type TableRowProps = {
-  heading: Exclude<Capitalize<keyof CharacterType>, 'Name'>;
+  heading: Exclude<Capitalize<keyof Charact erType>, 'Name'>; // Good way to constraint of allow input
   value: CharacterType[keyof CharacterType];
 };
 

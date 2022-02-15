@@ -29,7 +29,7 @@ const friends: UserModel[] = [
   { displayName: 'Tyrannosaurus', accountId: '789', isVerified: true }
 ];
 
-type UserProps = Omit<UserModel, 'accountId'>;
+type UserProps = Omit<UserModel, 'accountId'>; //omit a property accountId from userModel
 type AlternateUserProps = Pick<UserModel, 'displayName' | 'isVerified'>;
 
 const CurrentUser = ({
@@ -49,6 +49,7 @@ const Friend = ({
   displayName,
   isVerified
 }: React.ComponentProps<typeof CurrentUser>) => {
+  // React.ComponentProps<typeof CurrentUser> Replaced UserModel, now Friend will have same props as CurrentUser component
   return (
     <li className="friend">
       {displayName} {isVerified && '✓'}

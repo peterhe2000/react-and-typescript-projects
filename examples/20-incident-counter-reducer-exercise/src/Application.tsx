@@ -23,6 +23,8 @@ const reducer = (state: CounterState, action: BetterAction) => {
       return { value: state.value - 1 };
     case 'SET':
       return { value: action.payload };
+    default:
+      return state;
   }
 };
 
@@ -32,6 +34,7 @@ const Counter = () => {
   const increment = () => dispatch({ type: 'INCREMENT' });
   const decrement = () => dispatch({ type: 'DECREMENT' });
   const reset = () => dispatch({ type: 'SET', payload: 0 });
+  const set = (n: number) => dispatch({ type: 'SET', payload: n });
 
   return (
     <main className="Counter">

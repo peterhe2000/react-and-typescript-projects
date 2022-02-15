@@ -13,7 +13,7 @@ const initialState: RGBColorType = {
 };
 
 export const RGBContext = React.createContext<RGBContextType>(
-  initialState as RGBContextType
+  initialState as RGBContextType // as RGBContextType tell typescript trust the value will be RGBContextType
 );
 
 export const RGBContextProvider = ({

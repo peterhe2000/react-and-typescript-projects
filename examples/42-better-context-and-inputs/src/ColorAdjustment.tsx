@@ -5,7 +5,7 @@ import { useContext } from './context';
 
 export interface AdjustmentInputProps
   extends React.HTMLProps<HTMLInputElement> {
-  // React htmlInputElement
+  // React special htmlInputElement type for input html tag
   id: string;
   label: string;
   value: number;

@@ -13,6 +13,7 @@ const exampleText =
 const truncateString = (string: string, length = 100) =>
   string.slice(0, length) + '…';
 
+// function overload does not support arrow function too
 // Three variant of Text function which allow
 // 1. Optional truncate, Optional expanded
 // 2. truncate is set to false
